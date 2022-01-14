@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Product from '../components/Product';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions';
 
 const CategoryScreen = () => {
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      const { data } = await axios.get('/api/products');
-      setLoading(false);
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
+    dispatch(listProducts());
+  }, [dispatch]);
 
   const urlCategory = window.location.pathname.split('/')[1];
   let drinks = products.filter((product) => product.category === 'Drinks');
@@ -34,6 +30,8 @@ const CategoryScreen = () => {
       </Link>
       {loading ? (
         <h2>Loading...</h2>
+      ) : error ? (
+        <h2>{error}</h2>
       ) : (
         <>
           {urlCategory === 'Drinks' ? (

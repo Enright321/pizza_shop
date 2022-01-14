@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Categories from '../components/Categories';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listCategories } from '../actions/categoryActions';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 
 const HomeScreen = () => {
-  const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state) => state.categoryList);
+  const { loading, error, categories } = categoryList;
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true);
-      const { data } = await axios.get('/api/categories');
-      setLoading(false);
-      setCategories(data);
-    };
-    fetchCategories();
-  }, []);
+    dispatch(listCategories());
+  }, [dispatch]);
 
   return (
     <Container>
       <h1>Latest Products</h1>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
           {categories.map((category) => (
