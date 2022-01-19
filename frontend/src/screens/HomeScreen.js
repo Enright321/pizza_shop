@@ -6,6 +6,10 @@ import { listCategories } from '../actions/categoryActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
+import { Helmet } from 'react-helmet';
+import Meta from '../components/Meta';
+import { Link } from 'react-router-dom';
+
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const categoryList = useSelector((state) => state.categoryList);
@@ -17,6 +21,7 @@ const HomeScreen = () => {
 
   return (
     <Container>
+      <Meta />
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />

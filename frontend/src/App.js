@@ -10,6 +10,15 @@ import ProductScreen from './screens/ProductScreen';
 import LoginScreen from './screens/LoginScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import OrderScreen from './screens/OrderScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import UserListScreen from './screens/UserListScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
+
+import OrderListScreen from './screens/OrderListScreen';
 
 function App() {
   return (
@@ -17,7 +26,10 @@ function App() {
       <Header />
       <main className='py-3'>
         <Routes>
-          <Route path='/login/shipping' element={<ShippingScreen />} />
+          <Route path='/order/:id' element={<OrderScreen />} />
+          <Route path='/shipping' element={<ShippingScreen />} />
+          <Route path='/payment' element={<PaymentScreen />} />
+          <Route path='/placeorder' element={<PlaceOrderScreen />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
           <Route path='/profile' element={<ProfileScreen />} />
@@ -27,6 +39,15 @@ function App() {
             <Route path=':id' element={<CartScreen />} />
             <Route path='' element={<CartScreen />} />
           </Route>
+          <Route path='/admin/userlist' element={<UserListScreen />} />
+          <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
+          <Route path='/admin/productlist' element={<ProductListScreen />} />
+          <Route path='/admin/orderlist' element={<OrderListScreen />} />
+
+          <Route
+            path='/admin/product/:id/edit'
+            element={<ProductEditScreen />}
+          />
           <Route path='/' element={<HomeScreen />} />
         </Routes>
       </main>

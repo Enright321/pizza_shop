@@ -7,6 +7,8 @@ import { listProductDetails } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
+import Meta from '../components/Meta';
+
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
 
@@ -38,6 +40,7 @@ const ProductScreen = () => {
           <Link className='btn btn-dark my-3' to={`/${product.category}`}>
             Go Back
           </Link>
+          <Meta />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
