@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className='py-3'>
+      <main>
         <Routes>
           <Route path='/order/:id' element={<OrderScreen />} />
           <Route path='/shipping' element={<ShippingScreen />} />

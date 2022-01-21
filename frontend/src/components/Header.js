@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { logout } from '../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
+import logoImg from '../images/logo_transparent.png';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,17 +15,23 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
+      <Navbar className='nav' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Pizza Shop</Navbar.Brand>
+            <Navbar.Brand>
+              <img className='logo' src={logoImg} alt='Pizza Shop' />
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <i className='fas fa-shopping-cart'>Cart</i>
+                  <i
+                    style={{ paddingRight: '.2rem' }}
+                    className='fas fa-shopping-cart'
+                  ></i>
+                  Cart
                 </Nav.Link>
               </LinkContainer>
 
@@ -40,7 +47,11 @@ const Header = () => {
               ) : (
                 <LinkContainer to='/login'>
                   <Nav.Link>
-                    <i className='fas fa-user'>Sign In</i>
+                    <i
+                      style={{ paddingRight: '.2rem' }}
+                      className='fas fa-user'
+                    ></i>
+                    Sign In
                   </Nav.Link>
                 </LinkContainer>
               )}

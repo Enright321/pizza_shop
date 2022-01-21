@@ -5,10 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listCategories } from '../actions/categoryActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-
-import { Helmet } from 'react-helmet';
 import Meta from '../components/Meta';
-import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -20,23 +18,28 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      <Meta />
-      <h1>Latest Products</h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant='danger'>{error}</Message>
-      ) : (
-        <Row>
-          {categories.map((category) => (
-            <Col key={category._id} sm={12} md={6} lg={4} xl={3}>
-              <Categories category={category} />
-            </Col>
-          ))}
-        </Row>
-      )}
-    </Container>
+    <>
+      <Hero />
+      <Container>
+        <Meta />
+        <div className='row'>
+          <h1 className='title'>What's on the MENU?</h1>
+        </div>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant='danger'>{error}</Message>
+        ) : (
+          <Row>
+            {categories.map((category) => (
+              <Col key={category._id} sm={12} md={6} lg={4} xl={4}>
+                <Categories category={category} />
+              </Col>
+            ))}
+          </Row>
+        )}
+      </Container>
+    </>
   );
 };
 

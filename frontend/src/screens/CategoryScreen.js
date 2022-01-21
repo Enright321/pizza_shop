@@ -24,7 +24,9 @@ const CategoryScreen = () => {
 
   return (
     <Container>
-      <h1>{urlCategory}</h1>
+      <div className='row'>
+        <h1 className='title'>{urlCategory}</h1>
+      </div>
       <Link className='btn btn-dark my-3' to='/'>
         Go Back
       </Link>
@@ -37,7 +39,7 @@ const CategoryScreen = () => {
           {urlCategory === 'Drinks' ? (
             <Row>
               {drinks.map((item) => (
-                <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
+                <Col key={item._id} sm={12} md={6} xl={4}>
                   <Product item={item} />
                 </Col>
               ))}

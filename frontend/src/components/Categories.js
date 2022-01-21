@@ -1,17 +1,18 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 
 const Categories = ({ category }) => {
   return (
     <a href={`/${category.category}`}>
-      <Card className='m-3 p-3 rounded'>
-        <Card.Img src={category.image} variant='top' />
-        <Card.Body>
-          <Card.Title as='div'>
-            <strong>{category.category}</strong>
-          </Card.Title>
-        </Card.Body>
-      </Card>
+      <div className='home-card'>
+        <img
+          className='home-card-img'
+          src={category.image}
+          alt={category.category}
+        />
+        <div className='home-card-text'>
+          <h3 className='home-card-title'>{category.category}</h3>
+        </div>
+      </div>
     </a>
   );
 };
