@@ -5,8 +5,8 @@ const Product = ({ item }) => {
       <Card
         className='m-3 p-3 rounded'
         style={{
-          backgroundColor: '#3a3328',
-          color: '#dbd1ca',
+          backgroundColor: '#e7dfdd',
+          color: '#3a3328',
           minHeight: '260px',
         }}
       >
